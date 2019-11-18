@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Blackjack.cpp" />
     <ClCompile Include="CasinoGame.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -95,10 +96,14 @@
     <QtMoc Include="CasinoGame.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="Blackjack.ui" />
     <QtUic Include="CasinoGame.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CasinoGame.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Blackjack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

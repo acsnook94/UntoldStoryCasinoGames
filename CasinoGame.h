@@ -10,6 +10,9 @@ class CasinoGame : public QMainWindow
 public:
 	CasinoGame(QWidget *parent = Q_NULLPTR);
 
+private slots:
+	//void openDialog()
+
 private:
 	Ui::CasinoGameClass ui;
 };

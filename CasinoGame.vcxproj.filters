@@ -31,14 +31,23 @@
     <ClCompile Include="CasinoGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Blackjack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CasinoGame.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Blackjack.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="CasinoGame.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Blackjack.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
