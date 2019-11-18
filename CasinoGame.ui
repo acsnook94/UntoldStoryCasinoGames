@@ -96,8 +96,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btnBlackjack</sender>
+   <signal>clicked()</signal>
+   <receiver>CasinoGameClass</receiver>
+   <slot>startBlackjack()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>260</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-370</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>openDialog()</slot>
+  <slot>startBlackjack()</slot>
  </slots>
 </ui>

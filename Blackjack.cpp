@@ -5,7 +5,3 @@ Blackjack::Blackjack(QWidget *parent)
 {
 	ui.setupUi(this);
 }
-
-Blackjack::~Blackjack()
-{
-}

@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_CasinoGame.h"
+#include "Blackjack.h"
 
 class CasinoGame : public QMainWindow
 {
@@ -11,7 +12,7 @@ public:
 	CasinoGame(QWidget *parent = Q_NULLPTR);
 
 private slots:
-	//void openDialog()
+	void startBlackjack();
 
 private:
 	Ui::CasinoGameClass ui;

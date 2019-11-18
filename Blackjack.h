@@ -9,7 +9,7 @@ class Blackjack : public QDialog
 
 public:
 	Blackjack(QWidget *parent = Q_NULLPTR);
-	~Blackjack();
+	~Blackjack() {};
 
 private:
 	Ui::Blackjack ui;
