@@ -100,7 +100,7 @@
    <sender>btnBlackjack</sender>
    <signal>clicked()</signal>
    <receiver>CasinoGameClass</receiver>
-   <slot>startBlackjack()</slot>
+   <slot>loadBlackjack()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>260</x>
@@ -114,6 +114,6 @@
   </connection>
  </connections>
  <slots>
-  <slot>startBlackjack()</slot>
+  <slot>loadBlackjack()</slot>
  </slots>
 </ui>

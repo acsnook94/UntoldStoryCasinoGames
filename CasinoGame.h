@@ -10,10 +10,11 @@ class CasinoGame : public QMainWindow
 
 public:
 	CasinoGame(QWidget *parent = Q_NULLPTR);
-
-private slots:
-	void startBlackjack();
+	~CasinoGame() {};
 
 private:
 	Ui::CasinoGameClass ui;
+
+private slots:
+	void loadBlackjack();
 };

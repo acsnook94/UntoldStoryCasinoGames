@@ -6,11 +6,11 @@ CasinoGame::CasinoGame(QWidget *parent)
 	ui.setupUi(this);
 }
 
-void CasinoGame::startBlackjack()
+void CasinoGame::loadBlackjack()
 {
 	/*Blackjack* bj = new Blackjack(this); 
 	bj->setAttribute(Qt::WA_DeleteOnClose);
 	bj->show(); */
-	Blackjack bj;
+	Blackjack bj(this);
 	bj.exec();
 }
