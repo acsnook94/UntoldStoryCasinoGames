@@ -89,20 +89,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Blackjack.cpp" />
-    <ClCompile Include="CasinoGame.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SlotMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="CasinoGame.h" />
+    <QtMoc Include="MainMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Blackjack.ui" />
-    <QtUic Include="CasinoGame.ui" />
+    <QtUic Include="MainMenu.ui" />
     <QtUic Include="SlotMachine.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="Resources\CasinoGame.qrc" />
+    <QtRcc Include="Resources\MainMenu.qrc" />
     <QtRcc Include="Resources\Images.qrc" />
   </ItemGroup>
   <ItemGroup>

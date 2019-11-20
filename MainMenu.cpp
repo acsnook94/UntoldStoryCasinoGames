@@ -1,12 +1,12 @@
-#include "CasinoGame.h"
+#include "MainMenu.h"
 
-CasinoGame::CasinoGame(QWidget *parent)
+MainMenu::MainMenu(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 }
 
-void CasinoGame::loadBlackjack()
+void MainMenu::loadBlackjack()
 {
 	/*Blackjack* bj = new Blackjack(this); 
 	bj->setAttribute(Qt::WA_DeleteOnClose);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CasinoGameClass</class>
- <widget class="QMainWindow" name="CasinoGameClass">
+ <class>MainMenu</class>
+ <widget class="QMainWindow" name="MainMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -77,13 +77,13 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="Resources/CasinoGame.qrc"/>
+  <include location="Resources/MainMenu.qrc"/>
  </resources>
  <connections>
   <connection>
    <sender>btnExit</sender>
    <signal>clicked()</signal>
-   <receiver>CasinoGameClass</receiver>
+   <receiver>MainMenu</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -99,7 +99,7 @@
   <connection>
    <sender>btnBlackjack</sender>
    <signal>clicked()</signal>
-   <receiver>CasinoGameClass</receiver>
+   <receiver>MainMenu</receiver>
    <slot>loadBlackjack()</slot>
    <hints>
     <hint type="sourcelabel">
