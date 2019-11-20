@@ -7,11 +7,12 @@
 message("You are running qmake on a generated .pro file. This may not work!")
 
 
-HEADERS += ./CasinoGame.h \
+HEADERS += ./Card.h \
+    ./CasinoGame.h \
     ./Blackjack.h
-SOURCES += ./main.cpp \
+SOURCES += ./Blackjack.cpp \
     ./CasinoGame.cpp \
-    ./Blackjack.cpp
-FORMS += ./CasinoGame.ui \
-    ./Blackjack.ui
+    ./main.cpp
+FORMS += ./Blackjack.ui \
+    ./CasinoGame.ui
 RESOURCES += CasinoGame.qrc

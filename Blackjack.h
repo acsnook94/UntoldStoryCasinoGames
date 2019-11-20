@@ -1,9 +1,9 @@
 #pragma once
 
 #include <QDialog>
+#include <QStringBuilder>
 #include "ui_Blackjack.h"
 #include "Card.h"
-#include <vector>
 
 class Blackjack : public QDialog
 {
@@ -36,17 +36,20 @@ private:
 	int numPlayers = 0;
 	int numDecks = 0;
 	int currPlayer = 0;
+	int nextCard = 0;
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		/* CLASS METHODS */
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	//Non-UI Methods
-	void runGame();
+	void setupGame();
+
 
 	//UI Methods
 	Ui::Blackjack ui;
 
 private slots:
 	void exitGame() { this->close(); }
+
 };

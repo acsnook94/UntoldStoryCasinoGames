@@ -4,17 +4,19 @@ Blackjack::Blackjack(QWidget *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
-
-	this->runGame();
+	
+	
 }
 
-void Blackjack::runGame()
+void Blackjack::setupGame()
 {
-	this->numDecks = 3;
-	this->numPlayers = 2;
-	this->currPlayer = 0;
+	this->numDecks = 1;
+	this->numPlayers = 4;
 	this->allHands = new std::vector<Card*>[numPlayers];
+	this->nextCard = -1;
+	srand(time(nullptr));
 
+	//Build combined card deck
 	for (int d = 1; d <= this->numDecks; d++)
 	{
 		for (int i = 0; i < CARDS_PER_DECK; i++)
@@ -22,11 +24,12 @@ void Blackjack::runGame()
 			this->deck.push_back(const_cast<Card*>(this->allCardTypes) + i);
 		}
 	}
-	
-	for (Card*& cardPtr : this->deck)
+
+	for (int i = 0; i < this->numPlayers; i++)
 	{
-		ui.txtbOutput->append(QStringLiteral("Value=") + (cardPtr->value) + " Suit=" + (cardPtr->suit));
+		nextCard = rand() % this->deck.size();
+		this->allHands[i].push_back(this->deck.at(nextCard));
+		this->deck.erase(this->deck.begin() + nextCard);
 	}
 	
-
 }
