@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/Slots">
+        <file>clover.jpg</file>
+        <file>diamond.jpg</file>
+        <file>hearts.webp</file>
+    </qresource>
+</RCC>

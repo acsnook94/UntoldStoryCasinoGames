@@ -34,12 +34,18 @@
     <ClCompile Include="Blackjack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SlotMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CasinoGame.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Blackjack.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SlotMachine.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -50,9 +56,15 @@
     <QtUic Include="Blackjack.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="SlotMachine.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="CasinoGame.qrc">
+    <QtRcc Include="Resources\CasinoGame.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtRcc Include="Resources\Images.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
   </ItemGroup>

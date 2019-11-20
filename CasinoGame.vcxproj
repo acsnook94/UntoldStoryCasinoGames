@@ -91,6 +91,7 @@
     <ClCompile Include="Blackjack.cpp" />
     <ClCompile Include="CasinoGame.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SlotMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CasinoGame.h" />
@@ -98,15 +99,18 @@
   <ItemGroup>
     <QtUic Include="Blackjack.ui" />
     <QtUic Include="CasinoGame.ui" />
+    <QtUic Include="SlotMachine.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="CasinoGame.qrc" />
+    <QtRcc Include="Resources\CasinoGame.qrc" />
+    <QtRcc Include="Resources\Images.qrc" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Blackjack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <QtMoc Include="SlotMachine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
