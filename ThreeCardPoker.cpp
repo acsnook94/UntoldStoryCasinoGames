@@ -1,14 +1,3 @@
-//**************************************
-// Name: Basic C++ Poker Programming Assignment
-// Description:This will deal two five card poker hand and then determine the winner from among the hands or if there is a tie.
-// By: Winston Alexander Hope, Jr.
-//**************************************
-
-//Winston Hope, Jr.
-//Programming II, Program # 5
-//This will deal two five card poker hand
-//and then determine the winner from amongst handss
-
 // Three Card Poker is played as heads-up between the player's hand and the dealer's hand. 
 // After all ante wagers are placed, three cards are dealt to each player and the dealer. 
 // Players have a choice to either fold or continue in the game by placing a "play" wager equal to their ante. 
@@ -20,14 +9,19 @@
 // If the player hand wins both the ante and play wagers are paid 1 to 1. 
 // If the hands are tied, then there is no action on either wager.
 // Winning hands in order of precedence: Straight Flush, Three of a Kind, Straight, Flush, Pair and High Card.
-
+//
+// Created from code found on the internet and Winston Hope, Jr.
+// 
+// Craig Kickbush
+//
+// cwkickbush@dmacc.edu
+//
+// 2019-12-03
+//
 
 #include <iostream>
 #include <iomanip>
-// #include <stdlib>
 #include <ctime>
-// #include<conio>//single character imput... 
-				//...without the use of carriage return
 using namespace std;				
 				
 void shuffle(int[][13]);
@@ -103,40 +97,64 @@ do
   cout << face[hand4[2]] << " ";
   cout << "\n";
   playerBank = playerBank - 1;
-  cout << "Player you have placed a dollar in the ante:\n";
+  cout << "\nPlayer you have placed a dollar in the ante:\n";
   cout << "Your balance is " << playerBank << "\n";
 //
+  cout << "Your cards\n";
   print(hand1, hand2); //Print the first hand
   cout << endl;
 //	
-  handtype1 = Ppair(hand2, hand1); //Begin hand classificatiosn process	
+  handtype1 = straightflush(hand2, hand1); //Begin hand classificatiosn process	
   cout << endl;
 //
   cout << "Player may bet from 1 to " << playerBank << "\n";
   cout << "What is your bet?:\n";
   cin >> amtBet;
+  while (amtBet < 1 || amtBet > playerBank)
+  {
+    cout << "Player may bet from 1 to " << playerBank << "\n";
+    cin >> amtBet;
+  }
   cout << "Dealer:\n\n";
 //
   print(hand3, hand4); //Print the second hand
   cout << endl;
   cout << endl;	
 //
-  handtype2 = Ppair(hand4, hand3); 
+  handtype2 = straightflush(hand4, hand3); 
 // 
   cout<<"Player Hand:	Dealer Hand:"
 	<< "\n" << type[handtype1]
 	<<"		"<< type[handtype2] << endl;
 //
   if(handtype1 > handtype2)
-    cout<<"\nPlayer Wins!\n\n";
-    playerBank = playerBank + amtBet;
+    {
+    cout << "\nPlayer Wins!\n\n";
+    playerBank = playerBank + amtBet + 2; // amtBet and player/dealer ante
+    cout << "Your bank " << playerBank << "\n";
+    }
 //
-  if(handtype1<handtype2)
+  if(handtype1 < handtype2)
+    {
     cout<<"\nDealer Wins!\n\n";
     playerBank = playerBank - amtBet;
+    cout << "Your bank " << playerBank << "\n";
+    }
+    
 //
   if(handtype1 == handtype2)
+    {
 	Tie_Check(hand2, hand4, handtype1);
+	if (Tie_Check)
+	{
+	  playerBank = playerBank + amtBet + 2;
+    }
+    else
+    {
+	  playerBank = playerBank - amtBet;
+    }
+    cout << "Your bank " << playerBank << "\n";
+    }
 
 //
   clear_deck(hand1, hand2, hand3, hand4);
@@ -257,12 +275,11 @@ void deal(int ahand[3], int bhand[3], int chand[3], int dhand[3])
         }
         if(keep == 2) //if there is a pair
         {
-          cout<<"Player has a pair!\n\n";
+          cout<<"A pair!\n\n";
           return 1;
         }
-	  //if there is no pair check for flush
-      else
-        return flush(phand, qhand);
+        else
+          return 0;
   }
 //
   int flush(int phand[3], int qhand[3])
@@ -280,16 +297,27 @@ void deal(int ahand[3], int bhand[3], int chand[3], int dhand[3])
       } 
       if(keep==3) //if there is a flush
       {
-        cout<<"Player has a flush!\a\a\n\n";
+        cout<<"A flush!\a\a\n\n";
         return 2;
       }
       else //if there is no flush check for a straight
-        return straight(phand, qhand);
+        return Ppair(phand, qhand);
   }
 //
   int straight(int phand[3], int qhand[3])
   {
-    int frequency[3] = {0}, keep = 0, x, y, z = 0;
+  	int frequency[3] = {0}, keep = 0, x, y, z = 0;
+    int track;
+    // first arrange the array in ascending osrder
+    for(int b = 0; b < 2; b++)
+      for(int c = 0; c < 2; c++)
+      if(phand[c] < phand[c + 1])
+      {
+        track = phand[c + 1];
+        phand[c + 1] = phand[c];
+        phand[c] = track;
+      }
+    //int frequency[3] = {0}, keep = 0, x, y, z = 0;
 	 /*a straight is determined by checking:
 	 if the next value is one more than the 
 	 previous value.....*/
@@ -307,12 +335,12 @@ void deal(int ahand[3], int bhand[3], int chand[3], int dhand[3])
     } 
     if(z == 0)
     {
-      cout<<"Player has a straight!\a\a\n\n";
+      cout<<"A straight!\a\a\n\n";
       return 3;
     }
     else
     {
-      return threeofkind(phand, qhand);
+      return flush(phand, qhand);
     }
   }
 
@@ -331,16 +359,27 @@ void deal(int ahand[3], int bhand[3], int chand[3], int dhand[3])
       }
       if(keep==3)//if there is three of a kind
       {
-        cout << "Player has three of a kind!\a\a\n\n";
+        cout << "Three of a kind!\a\a\n\n";
         return 4;
       }
       else //if there is no three of a kind check for straightflush
-        return straightflush(phand, qhand);
+        return straight(phand, qhand);
   }
 
 //
 int straightflush(int phand[3],int qhand[3])
 {
+	int frequency[13] = {0}, keep = 0;
+    int track;
+    // first arrange the array in ascending osrder
+    for(int b = 0; b < 2; b++)
+      for(int c = 0; c < 2; c++)
+      if(phand[c] < phand[c + 1])
+      {
+        track = phand[c + 1];
+        phand[c + 1] = phand[c];
+        phand[c] = track;
+      }
 // int frequency[3] = {0}, keep = 0, x, y, z;
 // 
 //	 //checking to make sure that hand is not a flush
@@ -370,7 +409,7 @@ int straightflush(int phand[3],int qhand[3])
 //		 //...return '3' to indicate so
 // {
 //cout<<"Player has a straight flush!\a\a\n\n";
-return 0;
+return threeofkind(phand, qhand);
 //}
 }
 
@@ -409,15 +448,27 @@ return 0;
    /* the pair arrange function will multiply the first two pairs and 
       assign it to the first element in the array.
 	  So the following first pair to determine a winner */
-	  
-      if(hand2[0] > hand4[0])
-	    cout << "Player One Wins!";
-      if(hand2[0] < hand4[0])
-	    cout << "Player Two Wins!";
-      if(hand2[0] == hand4[0])
+	  if(hand2[0] == hand4[0])
+	    {
 	    tie_breaker(hand2, hand4, ht);
+	    if (tie_breaker)
+	      {
+	      cout << "Player One Wins!";
+	      return 1;
+	  	  }
+	    }
+      if(hand2[0] > hand4[0])
+        {
+	    cout << "Player One Wins!";
+	    return 1;
+	    }
+      if(hand2[0] < hand4[0])
+        {
+	    cout << "Dealer Wins!";
+	    return 0;
+        }
     } 
-    return 0; 
+    //return 0; 
   }
   
 //
@@ -465,9 +516,7 @@ return 0;
 			    break;
 		      }
 		    }
-	//////////////////////////////
-	//this is not necessary if 
-	//the hand is a three-of-kind hand
+	//this is not necessary if the hand is a three-of-kind hand
  if(tp != 3)
 	{
 	  int yy = 1;
@@ -483,12 +532,10 @@ return 0;
 	//////////////////////////////
 	int con=2;
 	if(tp==3)
-			con=1;
+	  con=1;
 	for(int bb = 0; bb < 13; bb++)
 		{ 
-		 if(tp == 3 && con == 3)//if hand is a 'three-of-kind'
-							//the the loop needs to break
-							//at two
+		 if(tp == 3 && con == 3) //if hand is a 'three-of-kind' the the loop needs to break at two
 		 break; 
 		 if(frequency[bb]==1)
 		 {
@@ -498,14 +545,13 @@ return 0;
 		} 
 }
 		cout<<endl;
-	///////////////////////////////
-	//copying the values back to argument 'h2'...
-	//the array containing a hand-no suits, only faces
+	// copying the values back to argument 'h2' the array containing a hand-no suits, only faces
 	 for(int copy = 0; copy < 3; copy++)
 		{
 		 h2[copy]=ar[copy];
 		}		
 }
+
 
 // this function determines the winner if the pairs are tied
   int tie_breaker(int h2[], int h4[], int ty)
@@ -537,17 +583,18 @@ return 0;
       if(h2[b] > h4[b])
       {
         cout << "\nPlayer One Wins!\n";
-        return 0;
+        return 1;
       }
       if (h2[b] < h4[b])
       {
-        cout << "\nPlayer Two Wins!\n";
+        cout << "\nDealer Wins!\n";
         return 0;
       }       
     }
     if(b == add)
     {
       cout << "\nTie Game! Both Players have the same hand\n";
+      return 0; 
     }
-  return 0; 
+  //return 0; 
   }
